@@ -11,6 +11,7 @@ const resultsData = {
     pun: "You go back and forth, but you always find your center. You're a creature of habit.",
     desc: "You are the definition of consistency. Like a pendulum or a spring, you operate in cycles. You might have your ups and downs, but you are predictable, reliable, and conserve your energy perfectly.",
     solver: "Verlet Integration or Crank-Nicolson",
+    celebrity: "Keanu Reeves", // Consistent, unproblematic, reliable
     color: "#2563eb" // Blue
   },
   ode_growth: {
@@ -19,6 +20,7 @@ const resultsData = {
     pun: "You know your limits. You push hard at first, but you know when to settle down.",
     desc: "You are ambitious but realistic. You grow and improve rapidly (exponentially) when you start something new, but you respect boundaries (Carrying Capacity K) and settle into a comfortable, sustainable rhythm.",
     solver: "Runge-Kutta 4 (RK4)",
+    celebrity: "Dwayne 'The Rock' Johnson", // Massive growth, now a steady institution
     color: "#3b82f6" // Lighter Blue
   },
 
@@ -29,6 +31,7 @@ const resultsData = {
     pun: "You're a smoother. You walk into a room and the tension just melts away.",
     desc: "You are a master of diffusion. You take sharp edges, chaotic data, or angry people and smooth them out over time. You value entropy and irreversible progress—you don't look back.",
     solver: "Finite Difference Method (Forward-Time Central-Space)",
+    celebrity: "Morgan Freeman", // Soothing, smooths out any scene
     color: "#10b981" // Emerald
   },
   pde_wave: {
@@ -37,6 +40,7 @@ const resultsData = {
     pun: "You make waves wherever you go. You transport energy without losing momentum.",
     desc: "You are high-energy and reactive. Unlike the Heat Equation, you don't smooth things out—you reflect them! You transmit information perfectly, but you can be prone to constructive (or destructive) interference.",
     solver: "Finite Element Method (FEM)",
+    celebrity: "Jim Carrey", // High energy, reflects everything, manic
     color: "#059669" // Darker Green
   },
   pde_laplace: {
@@ -45,6 +49,7 @@ const resultsData = {
     pun: "You are the Zen Master. No time dependence, just perfect equilibrium.",
     desc: "You are the steady state. You don't change with the ticking clock; you are defined entirely by your boundaries. You represent the perfect average of everything around you.",
     solver: "Relaxation Method (Jacobi / Gauss-Seidel)",
+    celebrity: "Snoop Dogg", // Totally zen, unbothered, steady state
     color: "#34d399" // Light Green
   },
 
@@ -55,6 +60,7 @@ const resultsData = {
     pun: "You're bullish on life. A little volatility just makes things interesting.",
     desc: "You are the standard model for success in a chaotic world. Like the stock market, you generally drift upwards (μ), but you have a 'wild side' (σ) that keeps people guessing.",
     solver: "Euler-Maruyama Method",
+    celebrity: "Elon Musk", // Volatile, rich, drifts upward but chaotic
     color: "#f59e0b" // Amber
   },
   sde_ou: {
@@ -63,6 +69,7 @@ const resultsData = {
     pun: "You wander off, but you always find your way home. You're like a rubber band.",
     desc: "You are mean-reverting. You like to explore and get a little chaotic, but there is a strong force (Gravity? Mom?) that always pulls you back to your long-term average.",
     solver: "Exact Integration / Gillespie Algorithm",
+    celebrity: "Robert Downey Jr.", // Wandered far off, but reverted to the mean (success)
     color: "#d97706" // Dark Amber
   },
   sde_white: {
@@ -71,6 +78,7 @@ const resultsData = {
     pun: "You are pure chaos. No filter, no memory, just instant reaction.",
     desc: "You live entirely in the moment. You are uncorrelated with your past and unpredictable in your future. Some call it scattered; you call it having a flat power spectrum.",
     solver: "Monte Carlo Simulations",
+    celebrity: "Eric Andre", // Pure, uncorrelated chaos
     color: "#fbbf24" // Bright Yellow
   },
 
@@ -81,6 +89,7 @@ const resultsData = {
     pun: "You don't just spread out; you teleport. You skip the small talk.",
     desc: "You exhibit 'Anomalous Diffusion.' While normal people take small steps, you take 'Lévy flights'—making giant leaps to new ideas or places instantly. You refuse to be bound by the standard rules of space.",
     solver: "Matrix Transform Method",
+    celebrity: "Lady Gaga", // Jumps between genres/styles instantly (Lévy flights)
     color: "#8b5cf6" // Purple
   },
   fde_decay: {
@@ -89,6 +98,7 @@ const resultsData = {
     pun: "You hold grudges... mathematically. Your past never truly fades away.",
     desc: "You have 'Heavy Tails' in your memory. Unlike normal people who forget things exponentially fast, your memories decay very slowly (algebraically). Everything you've ever done is still part of you today.",
     solver: "Grünwald-Letnikov Approximation",
+    celebrity: "Taylor Swift", // Famous for her long memory (and writing about it)
     color: "#7c3aed" // Dark Purple
   }
 };
@@ -264,22 +274,14 @@ export default function App() {
 
           <p className="pun-text">"{result.pun}"</p>
           
-          {/* --- IMAGE PLACEHOLDER COMMENTED OUT AS REQUESTED ---
-          <div className="image-placeholder">
-             <img 
-               src={`/${result.title.split(' ')[0].toLowerCase()}.png`} 
-               alt="Equation Graph" 
-               onError={(e) => e.target.style.display='none'} 
-               style={{maxWidth: '100%', maxHeight: '100%'}}
-             />
-             <span className="placeholder-text">[ Graphic: {result.title} ]</span>
-          </div>
-          */}
-
           <div className="details-grid">
             <div className="detail-item">
               <strong>The Vibe</strong>
               <p>{result.desc}</p>
+            </div>
+            <div className="detail-item">
+              <strong>Celebrity Match</strong>
+              <p style={{fontSize: '1.2rem', fontWeight: 'bold'}}>{result.celebrity}</p>
             </div>
             <div className="detail-item">
               <strong>Solver</strong>
@@ -299,8 +301,6 @@ export default function App() {
   return (
     <div className="app-container">
       <div className="card">
-        {/* ADDED TITLE HERE */}
-        {/* <h1 style={{fontSize: '1.5rem', marginBottom: '1rem'}}>Which Differential Equation Are You?</h1> */}
         <h1 style={{
           fontSize: '2.2rem', 
           fontWeight: '800', 
